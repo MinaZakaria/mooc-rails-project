@@ -14,7 +14,7 @@
             <h3><strong><center><%= course.title %></center></strong></h3>
             <p><center>Creator: <%= course.try(:user).try(:name) %></center></p>
             <% if current_user.name == course.user.name%>
-                <p><center><%= link_to 'Edit', edit_course_path(course), class: "btn btn-primary"%> <%= link_to 'Destroy', course, class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %></center></p>
+                <p><center><%= link_to 'Edit', edit_course_path(course), class: "btn btn-primary"%> <%= link_to 'Destroy', course, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></center></p>
             <% end %>
             <p><center><%= link_to 'Show', course, class: "btn btn-primary"%> </center></p>
           </div>
