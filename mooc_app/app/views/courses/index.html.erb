@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<div class="well well-lg">
+    <h1><center>All Courses</center></h1>
+    <center><%= link_to 'Create New Course',new_course_path, class: "btn btn-success"%></center>
+</div>
+<div class="container">
+    <div class="row">
+        <% @courses.each do |course| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="<%= image_url("2.jpg")%>" alt="...">
+          <div class="caption">
+            <h3><strong><center><%= course.title %></center></strong></h3>
+            <p><center>Creator: <%= course.try(:user).try(:name) %></center></p>
+            <% if current_user.name == course.user.name%>
+                <p><center><%= link_to 'Edit', edit_course_path(course), class: "btn btn-primary"%> <%= link_to 'Destroy', course, class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %></center></p>
+            <% end %>
+            <p><center><%= link_to 'Show', course, class: "btn btn-primary"%> </center></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+</div>

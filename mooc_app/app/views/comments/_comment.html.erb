@@ -1,0 +1,22 @@
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h2>Reviews</h2></div>
+  <div class="panel-body">
+      <p><%= link_to like_lecture_path(@lecture), method: :put do %>
+        <div class="glyphicon glyphicon-thumbs-up"></div> Like
+        <%= @lecture.get_upvotes.size %>
+      <% end %></p>
+      <p><%= link_to dislike_lecture_path(@lecture), method: :put do %>
+        <div class="glyphicon glyphicon-thumbs-down"></div> DisLike
+        <%= @lecture.get_downvotes.size %>
+      <% end %></p>
+<%= render 'comments/form' %>
+    <% @comments.each do |comment| %>
+        <h2><strong><%= comment.user.name %>:</strong></h2><br>
+        <p style="padding-left:5em"><%= comment.comment_text %></p>
+        <hr>
+    <% end %>
+
+  </div>
+</div>

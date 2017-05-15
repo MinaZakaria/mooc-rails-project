@@ -1,0 +1,248 @@
+
+tasks :
+1) html , css => hat7awelo theme wordpress
+2) customize theme (mn 3'er man5osh goa wla file mno).. fe client 7abb theme mo3ayn w 3ayz yzabat feh shoait 7agat
+3) plugins : t3ml plugin bt3ml functionality mo3ayana
+             tsht3'l 3la plugin mashhora (70 % mn sho3'l el wordpress mo3tmda 3la el plugin de) esmaha (woocommerce)
+             el plugin de bt2lb el site le e-commerce site
+
+hoa monasb le eh ?
+    site el a5bar w el articles
+    bs yt3ml beh ay 7aga
+momaizato ?
+    * t3ml project sare3 gedan .. backend gahz ,, front-end msh btktb fe native code (kolaha fun gahza)
+    * 3dd kbear mn el clients by2olk lazm yt3ml wordpress (sahl 3al client)
+3iobo ?
+    * security (w7sha gedan) .. lakn leha 7al
+    * maynf3sh a3dl fe el folderen eli fo2 3shan ma3 awl update kol da hayro7
+    * performance msh kawy (by3ml queries kter malhash lazma) 3shan y5alek tzaabt 7agat kter mn bara el code
+
+***********************************
+installation :
+**************
+* google -> wordpress download -> Download -> haynzl (wordpress-4.7.3)
+* extract (wordpress-4.7.3)
+* rename : esm el project (ex. iti_wp)
+* goa el local host : ha7ot el folder (iti_wp)
+* eft7o mel browser   localhost/iti_wp
+*********************************************************************************************************
+start :
+********
+tare2a 1):
+==========
+* eft7 el project 3al netbeans:
+    file->new project-> php -> php application with existing source -> next -> source folder: (mkan el folder iti_wp) -> next -> finish
+* wp-admin folder : feh el classes el 5asa bel backend
+* wp-include folder: fe el classes el 5asa bel wordpress
+* wp-content folder: da eli hasht3'l feh
+    goah -> theme
+         -> plugin
+wp-config-sample file: main configuration lel word press
+    goah : -> configuration el DB
+* create DB fe phpMyAdmin .. UTF-8 3shan han3ml theme 3araby
+    name : word_press_db , collation : utf8_general_ci
+* rename (wp-config-sample) .. hanshel sample (wp-config)
+* goa el (wp-config)
+    - esm el db , el user , password , host
+    - variable esmo : $table_prefix = 'wp_'     el tables kolaha hata5od el prefix da ( ex. wp_users ) de moshkelt security
+        han3'ayaro 'ay7aga_'
+tare2a 2):
+==========
+mn goa el browesr hoa bydeny form bya5od mny el configuration bta3 el db w byshel hoa -sample
+*********************************************************************************************************
+form :
+********
+* browser (localhost/iti_wp) .. ft7 3la form
+    -> title : iti wp
+    -> username: admin
+    -> password: ( balash admin! ) bs a7na nw han3mlha admin :D
+    -> email : ay7aga@gmail.com
+    -> (mark) Discourage search engines from indexing this site  (3shan law lesa fe mar7alet el developing wel security )
+        bnshelha lma negy n3ml publish
+    -> install
+* login
+*********************************************************************************************************
+DASH BOARD :
+************
+    * update version
+    * posts -> tags (key word) btfed fe el search
+    * media (images , vedios ,.. )
+    * pages
+    * comments
+    * appearance : goah 3 default themes bt5tar w a7na hanzawed wa7ed 4 aw customize
+    * editor : t3del fe el code
+    * plugins : fe el theme contact us .. form lma ydos t3ml validation php , jquery w tb3at email => bdl kol da yb2a pulgin
+        el plugin bt3ml functionality mo3ayana
+    * user -> add new -> role : author : edit 7agato bs ,, editor : ay 7ad ,, admin : ay 7aga fe el site
+*********************************************************************************************************
+dataBase :
+********** mafesh relations fe el database engine:(MyISAM)
+            el db eli feha relations  engine:(innoDB)
+table 1) posts , pages : el mafrod homa 2 table fe el db ..
+    law ft7na el db hanla2ehom fe table wa7ed esmo posts feh column post_type (ex. post , page)
+    law 3ayz a3ml team members  ha3'ayr el post_type
+    *tare2a we7sha : momken fe el category ade lel users dol category mo3ayn w fe el query ha2olo hat el users eli el category bt3hom team member
+     bs enta keda 7atet el headic 3al admin
+
+table 2) terms_table : categories w el tags .. far2 benhom fe table 3) esmo terms_taxonomy
+table 4) comments: feh el comments
+table 5) commentmeta : 3shan yb2a feh data zyada msh mawgoda fe table comment
+table 6) postmeta : 3shan yb2a feh data zyada msh mawgoda fe table post
+table 7) links : fokk depricated (backword compitability)
+table 8) options : d5l feh el settings eli el admin by5tarha
+            option name , option value
+table 9) term_relationships : relation ben el tables
+            object_id : bta3 el post , taxonomy bta3 el category
+table 10) users : kol el users
+table 11) usermeta : 3shan yb2a feh data zyada msh mawgoda fe table users
+            password : md5 .. da3eef
+            awl user dayman el role bta3to admin .. w id 1 >>>>> lazm id yt3'ayarr hena w kman fe table usermeta ( aw ams7o 5ales )
+
+*********************************************************************************************************
+theme :
+********** from html & css to theme
+
+* extract folder : healol
+((1)) haft7 el safa7at wa7da wa7da w afhm kol saf7a feha a 3shan ashof el structure
+    * run index.html
+    ================
+        + header , footer                       -> 2 menus
+        + slider (title , desc , image)         -> (CPT) post_type esmo {{slider}} feh el 3 7agat dol
+        + a5bar el sherka                       -> (CPT) post_type esmo {{news}}
+        + nabza 3an el sherka                   -> page el about ha3rdha hna
+        + 5dmat 7lol : a7ds 6 services          -> (CPT) post_type esmo {{service}}
+        + shraka2 el naga7                      -> (CPT) post_type esmo {{partener}}
+        + FB,twitter,copy right                 -> settings
+    * run blog.html
+    ================
+    * run about.html
+    ================
+        + lmazid mn el ma3lomat                 -> sidebar
+    * run contact_us.html
+    =====================
+    google -> search for plugin how to make contact us page wordpress           -> contact plugin
+    * run our_team.html
+    ===================
+        +list el team memebers                  -> (CPT) post_type esmo {{team}}->position CF(custom field)
+    * run parteners.html
+    ===================
+    * run services.html
+    ===================shbh el about
+***************************************************************************************************************
+((2))   1) goa el wp-content->themes ->create folder -> name : iti
+        2) goa el iti -> create file -> name: style.css
+            goa el style.css : lazm comment goah Theme Name : w badelo esm el theme .. el WP by2raaah lazm ykon mawgod
+            /*
+            Theme Name: ITI             // msh lazm nfs esm el folder
+            */
+        3) browser : dashboard -> appearence .. zhr t7t 7aga gdeda (broken theme)
+            e7na bn3ml theme ya ema customize theme(child theme)
+            * goa el iti -> create file index.php
+            * browser -> F5 .. hayzhar
+            * hover 3leh w a5tar activate
+3shan a3ml theme (required) : m7tag style.css + index.php bsssssssssssssssssssssssss
+        4) screen shot : 7ot ay sora goa ek iti w sameha screenshot
+                ady el sora permission
+                fe el real life : el SA hay5aleny ana el user bta3 el apache
+        5) create 2 files header.php , footer.php inside iti
+        6) goa el index.php
+                get_header();                 //include file el header , footer
+                <div>test content</div>
+                get_footer();
+        7) Routes
+            google -> wordpress hierarchy  -> Template hierarchy
+                goah :
+                Home Page display #
+                    law el default home page (law el home page dynamic)
+                        1-home.php          // haydawar 3la da el awl
+                        2-index.php         // law mala2ash el home haydawar 3la da
+                Front Page display #
+                    law ana 3mlt page w 5aletha hya el home bta3ty (law el home page static feha title w sora w 5alas)
+                        1- front-page.php
+                        2- home.php
+                        3- page.php         //file el mas2ol eno yft7 el pages
+                        4- index.php
+* ana ha7adedlo page mo3ayana law mafesh logic .. yadobk sora w title w keda .. mn el dash board
+* lakn msh ha7adedlo saf7a law el mawdo3 feh logic
+* index.php a5r file fe kol 7aga 3shan y7my nafso eno mayla2esh page mo3ayana
+
+                Single Post #
+                    lma wa7d yd5ol 3la post mo3ayan 3shan yshof tafaselo
+                        1- single-{post-type}-{slug}.php        ex. single-team-ahmedEbrahim.php
+                            //slug : goz2 mn el url
+                        2- single-{post-type}.php
+                        3- single.php               // kol el post-types
+                        4- singular.php             // 3shan law el page fe el html nfs el shkl bta3 el post
+                        5- index.php
+
+                Single Page #
+                    5asa be ay page et3mlha create be pages
+                        1- custom template file
+                        2- page-{slug}.php
+                        3- page-{id}.php
+                        4- page.php
+                        5- singular.php
+                        6- index.php
+
+                Category #
+
+
+
+
+
+*********************************************************************************************************
+nbny el theme :
+***************
+1) headr.php
+    * 7ot kol el 7agat eli sabta mn fo2
+    * 4 folders : js,fonts,images,css .. han7otohom goa el theme iti
+    * 2abl 2aflt tag el head:    <?php wp_head(); ?>
+2) footer.php
+    * 7ot el footer w kol eli ta7to
+    * 2abl 2aflt tag el body:   <?php wp_footer(); ?>
+
+7aga esmaha hock : hock 3shan el nas tdef css , js
+                    bydy emkanya le ay plugin enha t7ot filatha 3andy
+                    hock tany 3shan y3mlo send email w keda
+    el hock de leha esm sabt .. ana ka developer 3arfo
+
+file functions.php:
+==================
+    zay el config file bta3 el theme
+    byt3rf feh 7agat 3shan lma el theme yb2a active el wp y3rf hoa 3ayz a
+
+    ((1))
+        el image fe el new post msh mawgoda fe el theme bta3y ?! leh ?
+        3shan hya option
+        fa ana ha2olo ana 3ayz el feature image
+        ha2olo fe el file functions.php :
+
+            >>>>>>>>>> add_theme_support('post-thumbnails');
+    ((2))
+        ms7t tag el title   // law sbto hayfdl el title sabt le kol el safa7at
+        w 7atet mkano fe el functions.php :
+
+            >>>>>>>>>> add_theme_support('title-tag');
+    ((3))
+        ha3ml feh include lel files el js,css
+        w ha3mlhom goa function goa file el functions.php
+
+            >>>>>>>>>>
+            function wpdocs_theme_name_scripts() {
+                wp_enqueue_style('style-normalize', get_template_directory_uri() .'/css/normalize.css');
+                wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true );
+            }
+            add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );        //apply hock
+            
+            //get_template_directory_uri() btgeb el url mn el awl 5als l3'ayt el theme bta3k
+            // array('jquery') t7ot feh el dependences (ex. law m7tag jquery)
+            //'1.0.0' version bta3 el file (optional)
+            // true law 3ayzo fe el footer
+
+    ((4))
+        add_action ba7ot feh el hocks eli hasta5demha
+            >>>>>>>>>> add_action('asm_el_hock', 'esm elfunction eli goaha el commands eli 3mlo include lel script,style')
+            add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
+    ((5))
+        zbt el path bta3 el images :
+            src="<?php echo get_template_directory_uri() ?>/img/logo.png"

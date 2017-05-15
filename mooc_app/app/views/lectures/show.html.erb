@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="jumbotron">
+      <h3>lecture title:<%= @lecture.name %></h3>
+      <p>Coure: <%= @lecture.course.title %></p>
+      <p><%= raw(@lecture.content) %></p>
+      <% if current_user.name == @lecture.course.user.name %>
+      <p><%= link_to 'Edit', edit_lecture_path(@lecture),class: "btn btn-primary" %></p>
+      <%end%>
+      <%if @lecture.attachment.url %>
+      <div>
+          <%= link_to 'Download file', @lecture.try(:attachment).url,class: "btn btn-primary" %>
+      </div>
+      <%end%>
+    </div>
+</div>
+
+
+
+<%= render 'comments/comment' %>
